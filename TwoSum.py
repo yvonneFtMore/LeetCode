@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
 
 
-class Solution:
+class Solution(object):
 
     def __init__(self, arr, target):
         self.nums = arr.split(',')
         self.target = int(target)
         print self.nums, self.target
 
-    def TwoSum(self):
-        for i in range(len(self.nums)):
-            for j in range(1, len(self.nums)):
-                if int(self.nums[i]) + int(self.nums[j]) == self.target:
-                    return i, j
+    def two_sum(self):
+        dict = {}
+        for i in xrange(len(self.nums)):
+            x = int(self.nums[i])
+            if target - x in dict:
+                return dict[target - x], i
+            dict[x] = i
 
 if __name__ == '__main__':
     array = raw_input("Please input a list of numbers:")
     target = raw_input("Please input the target:")
     slt = Solution(array, target)
-    n, k = slt.TwoSum()
+    n, k = slt.two_sum()
     print n, k
